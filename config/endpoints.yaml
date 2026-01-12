@@ -1,0 +1,138 @@
+# Service Endpoint Configuration
+# Defines all service endpoints in the ecosystem
+
+# Neural Link Protocol Services
+services:
+  janus_bridge:
+    name: "Janus Protocol Bridge"
+    host: "localhost"
+    port: 8000
+    protocol: "http"
+    endpoints:
+      invoke: "/invoke"
+      health: "/health"
+      metrics: "/metrics"
+      register: "/agents/register"
+      discover: "/agents/discover"
+    enabled: true
+
+  message_bus:
+    name: "Message Bus"
+    host: "localhost"
+    port: 5672
+    protocol: "amqp"
+    queue_name: "neural_link_messages"
+    exchange: "neural_link"
+    enabled: false  # optional, for async messaging
+
+  agent_registry:
+    name: "Agent Registry"
+    host: "localhost"
+    port: 8100
+    protocol: "http"
+    endpoints:
+      list: "/agents"
+      register: "/agents/register"
+      status: "/agents/{agent_id}/status"
+      capabilities: "/agents/{agent_id}/capabilities"
+    enabled: true
+
+  telemetry_collector:
+    name: "Telemetry Collector"
+    host: "localhost"
+    port: 9090
+    protocol: "http"
+    endpoints:
+      metrics: "/metrics"
+      logs: "/logs"
+      traces: "/traces"
+    enabled: true
+
+# Integration Endpoints
+integrations:
+  github:
+    name: "GitHub API"
+    base_url: "https://api.github.com"
+    graphql_url: "https://api.github.com/graphql"
+    organization: "GlacierEQ"
+    repo_count: 790
+    rate_limit:
+      requests_per_hour: 5000
+    enabled: true
+
+  memory_plugin:
+    name: "MemoryPlugin MCP"
+    base_url: "http://localhost:8200"
+    endpoints:
+      store: "/memory/store"
+      query: "/memory/query"
+      sync: "/memory/sync"
+    platforms:
+      - perplexity
+      - claude
+      - chatgpt
+      - gemini
+      - grok
+    enabled: true
+
+  perplexity:
+    name: "Perplexity AI"
+    api_url: "https://api.perplexity.ai"
+    memory_context: "LFVBLPUL3N8N8K2FLYGCSCKMSMSRHSG9"
+    direct_relevance: "yD4IKCdlI0VCXlfD4xLT1x5D0dEU9Hd1"
+    enabled: true
+
+  quantum_memory:
+    name: "Quantum Memory Orchestrator"
+    base_url: "http://localhost:8300"
+    endpoints:
+      mem0: "/mem0"
+      supermemory: "/supermemory"
+      vector_store: "/vectors"
+    enabled: true
+
+  dropbox:
+    name: "Dropbox"
+    api_url: "https://api.dropboxapi.com/2"
+    file_count: 2526
+    enabled: true
+
+  federal_case:
+    name: "Federal Case Integration"
+    case_number: "1FDV-23-0001009"
+    repository: "federal-forensic-repair-omnibus"
+    security_clearance: "TIER1"
+    enabled: true
+
+# Monitoring & Observability
+monitoring:
+  prometheus:
+    host: "localhost"
+    port: 9090
+    scrape_interval: 15  # seconds
+
+  grafana:
+    host: "localhost"
+    port: 3000
+    dashboards:
+      - neural_link_overview
+      - agent_performance
+      - security_audit
+
+# Development Settings
+development:
+  debug_mode: true
+  log_level: "DEBUG"
+  mock_endpoints: false
+  cors_enabled: true
+  cors_origins:
+    - "http://localhost:3000"
+    - "http://localhost:8080"
+
+# Production Settings
+production:
+  debug_mode: false
+  log_level: "INFO"
+  require_tls: true
+  rate_limiting: true
+  rate_limit_per_minute: 60

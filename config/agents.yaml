@@ -1,0 +1,123 @@
+# Agent Configuration Registry
+# Defines all agents in the Neural Link Protocol ecosystem
+
+agents:
+  microwave_juggernaut:
+    agent_id: "Microwave-Juggernaut"
+    prefix: "MW"
+    role: "JGN"
+    tier: "TIER1"
+    type: "SNTNL"
+    capabilities:
+      - orchestration
+      - code_generation
+      - apex_coordination
+      - memory_synthesis
+    repositories:
+      - apex-command-center
+      - mastermind
+      - apex-omnibus-supreme
+    endpoint: "http://localhost:8000/invoke"
+    enabled: true
+
+  synthesizer_steward:
+    agent_id: "Synthesizer-Steward"
+    prefix: "SY"
+    role: "STW"
+    tier: "TIER1"
+    type: "SNTNL"
+    capabilities:
+      - memory_aggregation
+      - context_synthesis
+      - cross_platform_sync
+      - knowledge_graph
+    repositories:
+      - apex-memory-orchestrator
+      - quantum-memory-orchestrator
+      - apex-nexus-supreme
+    endpoint: "http://localhost:8001/invoke"
+    enabled: true
+
+  filesystem_commander:
+    agent_id: "Filesystem-Commander"
+    prefix: "FC"
+    role: "OPR"
+    tier: "TIER2"
+    type: "SRVC"
+    capabilities:
+      - cloud_sync
+      - file_operations
+      - multi_cloud_orchestration
+    repositories:
+      - apex-fs-commander
+    integrations:
+      - OneDrive
+      - Google Drive
+      - Dropbox
+      - TeraBox
+    endpoint: "http://localhost:8002/invoke"
+    enabled: true
+
+  repo_fleet_controller:
+    agent_id: "RepoFleet-Controller"
+    prefix: "RQ"
+    role: "OPR"
+    tier: "TIER1"
+    type: "SNTNL"
+    capabilities:
+      - bulk_operations
+      - pr_management
+      - ci_orchestration
+      - audit_logging
+    repositories:
+      - repo-fleet-controller
+    ecosystem_scope: 790  # manages all 790 repos
+    endpoint: "http://localhost:8003/invoke"
+    enabled: true
+
+  quantum_memory:
+    agent_id: "Quantum-Memory"
+    prefix: "QM"
+    role: "STW"
+    tier: "TIER1"
+    type: "SNTNL"
+    capabilities:
+      - vector_storage
+      - semantic_search
+      - long_term_retention
+    repositories:
+      - quantum-memory-orchestrator
+    integrations:
+      - Mem0
+      - SuperMemory
+      - MemoryPlugin
+    endpoint: "http://localhost:8004/invoke"
+    enabled: true
+
+  omni_engine:
+    agent_id: "Omni-Engine"
+    prefix: "OM"
+    role: "JGN"
+    tier: "TIER1"
+    type: "SNTNL"
+    capabilities:
+      - big_brain_orchestration
+      - multi_agent_coordination
+      - strategic_planning
+    repositories:
+      - OMNI_ENGINE
+    endpoint: "http://localhost:8005/invoke"
+    enabled: true
+
+# Agent Discovery Settings
+discovery:
+  broadcast_interval: 30  # seconds
+  health_check_interval: 10  # seconds
+  registration_timeout: 60  # seconds
+
+# Security Settings
+security:
+  sigil_rotation_days: 90
+  max_auth_failures: 3
+  lockout_duration: 300  # seconds
+  require_tls: false  # set true in production

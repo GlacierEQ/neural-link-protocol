@@ -1,0 +1,28 @@
+# Neural Link Protocol - Python Dependencies
+
+# Core dependencies
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# Authentication & Security
+cryptography>=41.0.0
+pyjwt>=2.8.0
+
+# Data handling
+pydantic>=2.5.0
+
+# Development dependencies
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-asyncio>=0.21.0
+black>=23.12.0
+ruff>=0.1.9
+mypy>=1.7.0
+
+# Monitoring & Logging
+prometheus-client>=0.19.0
+structlog>=23.3.0
+
+# Optional integrations
+# github-mcp-direct>=0.1.0  # GitHub integration
+# memory-plugin>=0.1.0      # MemoryPlugin MCP
